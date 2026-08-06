@@ -479,8 +479,16 @@
             <div class="collapse navbar-collapse" id="appside_main_menu">
                 <ul class="navbar-nav">
                     <li><a href="/">Utama</a></li>
-                    <li class="current-menu-item"><a href="#" style="font-size: 19px">Derma</a></li>
-                    <li><a href="/social-media">Sedekah Subuh</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Derma</a>
+                        <ul class="sub-menu">
+                            <li><a href="#organization" class="nav-donation-link" data-id="6">Sedekah Subuh</a></li>
+                            <li><a href="#organization" class="nav-donation-link" data-id="2">Masjid/Surau Baru</a></li>
+                            <li><a href="#organization" class="nav-donation-link" data-id="4">Pusat Tahfiz</a></li>
+                            <li><a href="#organization" class="nav-donation-link" data-id="5">Imarah Masjid</a></li>
+                            <li><a href="/social-media">Komuniti Derma</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/yuran">Yuran</a></li>
                     <li class="menu-item-has-children">
                         <a href="#">Perniagaan</a>
@@ -1375,6 +1383,12 @@
                 var type = $(this).attr("id");
                 typedonation = type;
                 loadDonationCarousel(typedonation, searchQuery);
+            });
+
+            $(document).on('click', '.nav-donation-link', function () {
+                var type = $(this).data('id');
+                $(`#${type}`).tab('show');
+                loadDonationCarousel(type, searchQuery);
             });
 
             $('#donation-search-bar').on('input', function () {
